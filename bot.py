@@ -1,13 +1,18 @@
 import discord
 from discord.ext import commands
 import random
+import json
 
 users_prefixes = {}
 default_prefix = '!'
 
 #client = discord.Client(status=discord.Status.dnd, activity=discord.Game("Booting up"))
-TOKEN = 'NzM2OTE0OTU2NzI5MTg4NDE1.Xx1viA.3G8GxvqcSdjxbJ8jEa_ugY2N4fY'
 
+with open('config.json') as f:
+    config = json.load(f)
+
+TOKEN = config["TOKEN"]
+print("USING TOKEN_ID:", TOKEN)
 
 async def determine_prefix(bot, msg):
     if msg.author in users_prefixes:
